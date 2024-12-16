@@ -364,18 +364,21 @@ for (const person of people) {
   const table = document.querySelector('.dashboard').firstElementChild;
   // create tr with 6 cells and inner text for them
   const row = document.createElement('tr');
-  const personsName = (document.textContent = person.name);
-  const gender = (document.textContent = person.sex);
-  const born = (document.textContent = person.born);
-  const died = (document.textContent = person.died);
-  const age = (document.textContent = died - born);
-  const century = (document.textContent = Math.ceil(died / 100));
+  const personsName = document.createTextNode(person.name);
+  const gender = document.createTextNode(person.sex);
+  const born = document.createTextNode(person.born);
+  const died = document.createTextNode(person.died);
+  const age = document.createTextNode(person.died - person.born);
+  const century = document.createTextNode(Math.ceil(person.died / 100));
   // create an array for add a td to a tr throuh iteration for of
   const header = [personsName, gender, born, died, age, century];
 
   for (const i of header) {
-    row.innerHTML += `<td>${i}</td>`;
+    const cell = document.createElement('td');
+    cell.appendChild(i);
+    row.appendChild(cell);
+
   }
-  // append created row to table
+// append created row to table
   table.appendChild(row);
-}
+  }
