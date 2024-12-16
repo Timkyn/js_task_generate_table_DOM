@@ -358,3 +358,24 @@ const people = [
 console.log(people); // you can remove it
 
 // write your code here
+// step 1 . 1
+for (const person of people) {
+  // find table.tbody
+  const table = document.querySelector('.dashboard').firstElementChild;
+  // create tr with 6 cells and inner text for them
+  const row = document.createElement('tr');
+  const personsName = (document.textContent = person.name);
+  const gender = (document.textContent = person.sex);
+  const born = (document.textContent = person.born);
+  const died = (document.textContent = person.died);
+  const age = (document.textContent = died - born);
+  const century = (document.textContent = Math.ceil(died / 100));
+  // create an array for add a td to a tr throuh iteration for of
+  const header = [personsName, gender, born, died, age, century];
+
+  for (const i of header) {
+    row.innerHTML += `<td>${i}</td>`;
+  }
+  // append created row to table
+  table.appendChild(row);
+}
