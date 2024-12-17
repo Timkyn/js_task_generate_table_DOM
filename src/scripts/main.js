@@ -365,7 +365,9 @@ for (const person of people) {
   // create tr with 6 cells and inner text for them
   const row = document.createElement('tr');
   const personsName = document.createTextNode(person.name);
-  const gender = document.createTextNode(person.sex);
+  const gender = document.createTextNode(
+    person.sex === 'm' ? 'Male' : 'Female',
+  );
   const born = document.createTextNode(person.born);
   const died = document.createTextNode(person.died);
   const age = document.createTextNode(person.died - person.born);
@@ -375,9 +377,10 @@ for (const person of people) {
 
   for (const i of header) {
     const cell = document.createElement('td');
+
     cell.appendChild(i);
     row.appendChild(cell);
   }
-// append created row to table
+  // append created row to table
   table.appendChild(row);
-  }
+}
