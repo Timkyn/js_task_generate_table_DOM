@@ -361,7 +361,7 @@ console.log(people); // you can remove it
 // step 1 . 1
 for (const person of people) {
   // find table.tbody
-  const table = document.querySelector('.dashboard').firstElementChild;
+  const table = document.querySelector('.dashboard tbody');
   // create tr with 6 cells and inner text for them
   const row = document.createElement('tr');
   const personsName = document.createTextNode(person.name);
@@ -377,7 +377,6 @@ for (const person of people) {
     const cell = document.createElement('td');
     cell.appendChild(i);
     row.appendChild(cell);
-
   }
 // append created row to table
   table.appendChild(row);
